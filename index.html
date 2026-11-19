@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>甜蜜陷阱・戀愛推銷調查檔案 —— 教學簡報</title>
+    <style>
+        :root {
+            /* Palette Requirements */
+            --bg-cream: #FFF5E9;       /* 淡奶白 */
+            --bg-pink: #F8DDE5;        /* 奶油粉 */
+            --bg-purple: #EADDEB;      /* 淡粉紫 */
+            --accent-berry: #A82D50;   /* 莓果紅 (重點/警示) */
+            --accent-wine: #382631;    /* 深酒紅 (標題/重度文字) */
+            --text-dark: #382631;      /* 主文字深酒紅 */
+            --text-secondary: #5E4253; /* 次要文字深褐紫 */
+            --text-muted: #8F6E83;     /* 輔助標籤 */
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --card-border: rgba(168, 45, 80, 0.16);
+            --card-shadow: 0 8px 22px -3px rgba(56, 38, 49, 0.08), 0 3px 8px -2px rgba(168, 45, 80, 0.04);
+            --nav-bg: rgba(255, 245, 233, 0.96);
+            --pill-bg: rgba(248, 221, 229, 0.7);
+            --pill-border: rgba(168, 45, 80, 0.3);
+            --stamp-border: #A82D50;
+        }
+
+        [data-theme="dark"] {
+            --bg-cream: #1c131a;
+            --bg-pink: #271723;
+            --bg-purple: #231522;
+            --accent-berry: #ff5484;
+            --accent-wine: #fff0f5;
+            --text-dark: #fff0f5;
+            --text-secondary: #edd6e3;
+            --text-muted: #c4a5b8;
+            --card-bg: rgba(43, 27, 39, 0.96);
+            --card-border: rgba(244, 114, 162, 0.28);
+            --card-shadow: 0 8px 22px -3px rgba(0, 0, 0, 0.5);
+            --nav-bg: rgba(28, 19, 26, 0.96);
+            --pill-bg: rgba(244, 84, 132, 0.18);
+            --pill-border: rgba(244, 84, 132, 0.45);
+            --stamp-border: #ff5484;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", "PingFang TC", sans-serif;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-pink) 50%, var(--bg-purple) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Strong tag highlighting with soft background */
+        strong {
+            font-weight: 750;
+            color: var(--accent-wine);
+            background-color: rgba(168, 45, 80, 0.1);
+            padding: 0.1em 0.35em;
+            margin: 0 0.1em;
+            border-radius: 4px;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+
+        [data-theme="dark"] strong {
+            color: #ff94b4;
+            background-color: rgba(244, 63, 117, 0.22);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 100;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: var(--accent-berry);
+            stroke-width: 2.2;
+        }
+
+        .brand-title {
+            font-size: 1.02rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--accent-wine);
+        }
+
+        .brand-tag {
+            font-size: 0.75rem;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            color: var(--accent-berry);
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-dark);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background: var(--bg-pink);
+            border-color: var(--accent-berry);
+            color: var(--accent-berry);
+        }
+
+        /* Presentation Viewport with Balanced Airy Margin */
+        .presentation-viewport {
+            flex: 1;
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 20px 24px 74px 24px;
+        }
+
+        /* Slide Article: Spaced out naturally to fill the page gracefully */
+        .slide {
+            width: 100%;
+            max-width: 1120px;
+            display: none;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Slide Header Hierarchy */
+        .slide-header {
+            margin-bottom: 16px;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+
+        .act-pill {
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            color: var(--accent-berry);
+            padding: 3px 12px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .grounding-pill {
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2px 10px;
+            border-radius: 6px;
+        }
+
+        .slide-title {
+            font-size: 1.95rem;
+            font-weight: 900;
+            color: var(--accent-wine);
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+
+        /* Distinct subtitle with breathing room */
+        .slide-subtitle {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .sub-icon {
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* Universal Card Padding & Line-height: Breathing and spacious */
+        .concept-card, 
+        .tactic-card, 
+        .myth-card, 
+        .shield-card, 
+        .bottleneck-card, 
+        .evidence-pin-card, 
+        .dossier-verdict-card, 
+        .empathy-card, 
+        .domino-card, 
+        .japan-req-card, 
+        .flow-step-card, 
+        .law-focus-card, 
+        .cpa-provisions-card, 
+        .handbook-col,
+        .cover-art-card,
+        .cover-intro-card {
+            padding: 20px 24px !important;
+            border-radius: 16px;
+            box-sizing: border-box;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        /* Comfortable Typography & Line Spacing */
+        .concept-card p, 
+        .tactic-card p, 
+        .myth-card p, 
+        .shield-card p, 
+        .bottleneck-card p, 
+        .evidence-pin-card p, 
+        .dossier-verdict-card p, 
+        .domino-card p, 
+        .japan-req-card p, 
+        .flow-step-card p, 
+        .slide-content p {
+            line-height: 1.72 !important;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Natural, unbroken text for wide banner cards */
+        .full-flow-text {
+            font-size: 0.94rem;
+            line-height: 1.72 !important;
+            margin-bottom: 0 !important;
+            width: 100%;
+        }
+
+        /* Detective Alert Card: elegant, airy bottom anchor */
+        .detective-alert-card {
+            margin-top: 14px;
+            background: linear-gradient(135deg, rgba(168, 45, 80, 0.05) 0%, rgba(248, 221, 229, 0.3) 100%);
+            border: 1px solid rgba(168, 45, 80, 0.22);
+            border-radius: 12px;
+            padding: 12px 20px !important;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        [data-theme="dark"] .detective-alert-card {
+            background: linear-gradient(135deg, rgba(244, 63, 117, 0.12) 0%, rgba(45, 29, 41, 0.6) 100%);
+            border-color: rgba(244, 63, 117, 0.3);
+        }
+
+        .alert-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            white-space: nowrap;
+        }
+
+        .alert-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .alert-content {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        /* Slide 1: Cover */
+        .cover-showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 22px;
+            align-items: stretch;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .cover-showcase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cover-art-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #FFFDF9 0%, #F8DDE5 100%);
+            border: 2px solid rgba(168, 45, 80, 0.25);
+            padding: 22px 24px !important;
+        }
+
+        [data-theme="dark"] .cover-art-card {
+            background: linear-gradient(145deg, #2D1D29 0%, #3D2235 100%);
+        }
+
+        .cover-badge-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .sticker-pill {
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: #FFFFFF;
+            color: var(--accent-wine);
+            border: 1px solid rgba(168, 45, 80, 0.2);
+        }
+
+        .pill-alert {
+            background: var(--accent-berry);
+            color: #FFFFFF;
+        }
+
+        .hero-cover-svg {
+            width: 100%;
+            max-width: 230px;
+            height: auto;
+            margin: 6px 0 12px 0;
+            filter: drop-shadow(0 4px 10px rgba(168, 45, 80, 0.15));
+        }
+
+        .cover-slogan {
+            font-size: 0.95rem;
+            color: var(--accent-wine);
+        }
+
+        .cover-intro-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 22px 26px !important;
+        }
+
+        .dossier-stamp-box {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 0.88rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--accent-berry);
+            border: 1.5px dashed var(--accent-berry);
+            padding: 3px 10px;
+            border-radius: 6px;
+            width: fit-content;
+            margin-bottom: 10px;
+        }
+
+        .intro-headline {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .intro-p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            line-height: 1.68;
+        }
+
+        .cover-feature-pills {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .feat-pill {
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            background: rgba(248, 221, 229, 0.45);
+            border: 1px solid rgba(168, 45, 80, 0.2);
+            padding: 8px 14px;
+            border-radius: 10px;
+        }
+
+        [data-theme="dark"] .feat-pill {
+            background: rgba(244, 63, 117, 0.12);
+        }
+
+        .guide-action-hint {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--accent-berry);
+            border-top: 1px dashed var(--card-border);
+            padding-top: 10px;
+        }
+
+        /* Slide 2: Story Flow */
+        .story-flow-wrapper {
+            margin-bottom: 16px;
+        }
+
+        .flow-header-tip {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--accent-berry);
+            margin-bottom: 10px;
+        }
+
+        .flow-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .flow-steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .flow-step-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border-top: 3.5px solid var(--accent-berry);
+            padding: 18px 18px !important;
+            min-height: 185px;
+        }
+
+        .step-badge {
+            font-size: 1.45rem;
+            font-weight: 900;
+            color: var(--accent-berry);
+            margin-bottom: 6px;
+        }
+
+        .step-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 8px;
+        }
+
+        .step-text {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            flex: 1;
+            line-height: 1.65;
+        }
+
+        .step-arrow {
+            position: absolute;
+            top: 18px;
+            right: 14px;
+            font-size: 1.15rem;
+            color: var(--card-border);
+        }
+
+        .law-focus-card {
+            margin-bottom: 12px;
+            padding: 16px 22px !important;
+        }
+
+        .law-tag {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Slide 3: Headline Stamp & Dossier */
+        .headline-verdict-banner {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(168, 45, 80, 0.08) 0%, rgba(248, 221, 229, 0.45) 100%);
+            border: 2.5px double var(--accent-berry);
+            border-radius: 14px;
+            padding: 14px 22px;
+            margin-bottom: 14px;
+        }
+
+        .agency-tag {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            display: block;
+        }
+
+        .headline-stamp-amount {
+            font-size: 2.6rem;
+            font-weight: 950;
+            line-height: 1;
+            color: var(--accent-berry);
+            letter-spacing: -1px;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            margin-top: 2px;
+        }
+
+        .stamp-action {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .stamp-digits {
+            font-size: 3.3rem;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+        }
+
+        .stamp-unit {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .verdict-headline-title {
+            font-size: 1.18rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 4px;
+        }
+
+        .verdict-headline-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        [data-theme="dark"] .headline-verdict-banner {
+            background: linear-gradient(135deg, rgba(244, 63, 117, 0.18) 0%, rgba(45, 29, 41, 0.8) 100%);
+            border-color: #ff5484;
+        }
+
+        [data-theme="dark"] .headline-stamp-amount {
+            color: #ff6e9a;
+        }
+
+        .dossier-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .dossier-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dossier-evidence-col {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pin-tag {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            margin-bottom: 3px;
+        }
+
+        .evidence-pin-card h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 4px;
+        }
+
+        .dossier-verdict-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 18px 22px !important;
+        }
+
+        .verdict-card-header {
+            margin-bottom: 8px;
+        }
+
+        .verdict-pill {
+            display: inline-block;
+            font-size: 0.88rem;
+            font-weight: 800;
+            background: var(--pill-bg);
+            color: var(--accent-berry);
+            padding: 2px 10px;
+            border-radius: 999px;
+            margin-bottom: 4px;
+        }
+
+        .chat-dossier-mock {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 6px 0 10px 0;
+        }
+
+        .mock-bubble {
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 0.86rem;
+            line-height: 1.5;
+        }
+
+        .mock-bubble-left {
+            background: rgba(248, 221, 229, 0.5);
+            border-left: 3px solid var(--accent-berry);
+            align-self: flex-start;
+        }
+
+        .mock-bubble-right {
+            background: rgba(234, 221, 235, 0.5);
+            border-right: 3px solid var(--accent-wine);
+            align-self: flex-end;
+        }
+
+        .mock-sender {
+            display: block;
+            font-size: 0.86rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            margin-bottom: 2px;
+        }
+
+        .dossier-meta {
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--accent-wine);
+            border-top: 1px dashed var(--card-border);
+            padding-top: 8px;
+        }
+
+        /* Slide 4: Tactic Triad */
+        .tactic-triad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .tactic-triad-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tactic-card {
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tactic-badge {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            margin-bottom: 2px;
+        }
+
+        .card-ref-tag {
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .tactic-card h4 {
+            font-size: 1.08rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 6px;
+        }
+
+        /* Slide 5: Dialogue Clouds & Empathy */
+        .dialogue-cloud-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .chat-bubble {
+            border-radius: 14px;
+            padding: 12px 20px !important;
+            font-size: 0.94rem;
+            max-width: 82%;
+            position: relative;
+            box-shadow: 0 3px 10px rgba(56, 38, 49, 0.04);
+            line-height: 1.55;
+        }
+
+        .bubble-left {
+            align-self: flex-start;
+            background: #FFFFFF;
+            border: 1px solid rgba(168, 45, 80, 0.2);
+            border-left: 4px solid var(--accent-berry);
+        }
+
+        .bubble-right {
+            align-self: flex-end;
+            background: rgba(248, 221, 229, 0.5);
+            border: 1px solid rgba(168, 45, 80, 0.25);
+            border-right: 4px solid var(--accent-wine);
+        }
+
+        .bubble-inner {
+            align-self: center;
+            background: rgba(234, 221, 235, 0.6);
+            border: 1px dashed var(--accent-berry);
+            font-style: italic;
+        }
+
+        [data-theme="dark"] .bubble-left {
+            background: var(--card-bg);
+            border-color: rgba(244, 63, 117, 0.35);
+        }
+
+        [data-theme="dark"] .bubble-right {
+            background: rgba(244, 63, 117, 0.15);
+            border-color: rgba(244, 63, 117, 0.4);
+        }
+
+        [data-theme="dark"] .bubble-inner {
+            background: rgba(43, 27, 39, 0.9);
+            border-color: var(--accent-berry);
+        }
+
+        .chat-sender {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            margin-bottom: 2px;
+        }
+
+        .empathy-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .empathy-card h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+        }
+
+        .empathy-reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .empathy-reasons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .empathy-reason-item {
+            background: rgba(248, 221, 229, 0.35);
+            border: 1px solid rgba(168, 45, 80, 0.2);
+            border-radius: 12px;
+            padding: 10px 14px;
+        }
+
+        [data-theme="dark"] .empathy-reason-item {
+            background: rgba(244, 63, 117, 0.12);
+        }
+
+        .reason-tag {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            margin-bottom: 3px;
+        }
+
+        .empathy-reason-item p {
+            font-size: 0.86rem;
+            color: var(--text-dark);
+            line-height: 1.55;
+            margin-bottom: 0;
+        }
+
+        /* Slide 6: Domino Grid */
+        .domino-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .domino-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .domino-card {
+            min-height: 185px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .domino-step {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--accent-berry);
+            margin-bottom: 6px;
+        }
+
+        .domino-card h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 6px;
+        }
+
+        /* Slide 7: Shield Banner */
+        .headline-shield-banner {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(22, 163, 74, 0.08) 0%, rgba(248, 221, 229, 0.35) 100%);
+            border: 2.5px double #16a34a;
+            border-radius: 14px;
+            padding: 14px 22px;
+            margin-bottom: 14px;
+        }
+
+        .court-case-number {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #15803d;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .shield-big-verdict {
+            font-size: 2.4rem;
+            font-weight: 950;
+            line-height: 1.05;
+            color: #166534;
+            letter-spacing: -0.5px;
+            margin: 2px 0;
+        }
+
+        .seal-sub-tag {
+            display: inline-block;
+            background: #16a34a;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.5px;
+        }
+
+        .shield-verdict-title {
+            font-size: 1.18rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 4px;
+        }
+
+        .shield-verdict-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        [data-theme="dark"] .headline-shield-banner {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.18) 0%, rgba(45, 29, 41, 0.8) 100%);
+            border-color: #22c55e;
+        }
+
+        [data-theme="dark"] .court-case-number {
+            color: #4ade80;
+        }
+
+        [data-theme="dark"] .shield-big-verdict {
+            color: #86efac;
+        }
+
+        .myth-buster-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .myth-buster-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .myth-card {
+            border-left: 4px solid var(--accent-berry);
+            min-height: 150px;
+        }
+
+        .shield-card {
+            border-left: 4px solid #16a34a;
+            min-height: 150px;
+        }
+
+        .myth-header {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            margin-bottom: 4px;
+        }
+
+        .shield-header {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: #16a34a;
+            margin-bottom: 4px;
+        }
+
+        .court-badge {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .myth-card h3, .shield-card h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 6px;
+        }
+
+        .cpa-provisions-card {
+            border-left: 4px solid var(--accent-wine);
+            margin-bottom: 10px;
+            padding: 14px 22px !important;
+        }
+
+        .cpa-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.96rem;
+            color: var(--accent-wine);
+            margin-bottom: 4px;
+        }
+
+        .cpa-icon {
+            font-size: 1.15rem;
+        }
+
+        /* Slide 8: Bottleneck Grid */
+        .bottleneck-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .bottleneck-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bottleneck-card {
+            min-height: 195px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .b-badge {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            margin-bottom: 4px;
+        }
+
+        .bottleneck-card h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 6px;
+        }
+
+        /* Slide 9: Japan Law */
+        .japan-header-box {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .japan-stamp {
+            display: inline-block;
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            border: 1px dashed var(--accent-berry);
+            padding: 2px 12px;
+            border-radius: 999px;
+            margin-bottom: 4px;
+        }
+
+        .japan-header-box h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+        }
+
+        .japan-flow-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 900px) {
+            .japan-flow-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .japan-req-card {
+            min-height: 120px;
+        }
+
+        .req-tag {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        .japan-req-card h4 {
+            font-size: 1.02rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 4px;
+        }
+
+        .japan-verdict-box {
+            background: rgba(168, 45, 80, 0.08);
+            border: 1px solid var(--accent-berry);
+            border-radius: 12px;
+            padding: 10px 18px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 0.94rem;
+            color: var(--accent-wine);
+        }
+
+        [data-theme="dark"] .japan-verdict-box {
+            background: rgba(244, 63, 117, 0.16);
+            color: #fff0f5;
+        }
+
+        /* Slide 10: Action Handbook (Preserved spacious layout) */
+        .handbook-calendar-strip {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: linear-gradient(135deg, rgba(22, 101, 52, 0.08) 0%, rgba(248, 221, 229, 0.3) 100%);
+            border: 1.5px solid #16a34a;
+            border-radius: 14px;
+            padding: 10px 18px;
+            margin-bottom: 12px;
+        }
+
+        .calendar-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #16a34a;
+            color: #FFFFFF;
+            padding: 5px 12px;
+            border-radius: 8px;
+            line-height: 1.1;
+            flex-shrink: 0;
+        }
+
+        .cal-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .cal-days {
+            font-size: 1.35rem;
+            font-weight: 900;
+        }
+
+        .calendar-desc {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            line-height: 1.55;
+        }
+
+        .handbook-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1.35fr;
+            gap: 14px;
+            align-items: stretch;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 850px) {
+            .handbook-grid {
+                grid-template-columns: 1fr;
+            }
+            .handbook-divider {
+                display: none;
+            }
+        }
+
+        .flags-col {
+            background: linear-gradient(180deg, rgba(168, 45, 80, 0.08) 0%, rgba(248, 221, 229, 0.35) 100%) !important;
+            border: 2px solid rgba(168, 45, 80, 0.3) !important;
+            padding: 18px 20px !important;
+        }
+
+        [data-theme="dark"] .flags-col {
+            background: linear-gradient(180deg, rgba(244, 63, 117, 0.16) 0%, rgba(45, 29, 41, 0.8) 100%) !important;
+            border-color: rgba(244, 63, 117, 0.45) !important;
+        }
+
+        .sop-col {
+            background: linear-gradient(180deg, rgba(22, 101, 52, 0.05) 0%, rgba(255, 255, 255, 0.96) 100%) !important;
+            border: 2px solid rgba(22, 101, 52, 0.3) !important;
+            padding: 18px 20px !important;
+        }
+
+        [data-theme="dark"] .sop-col {
+            background: linear-gradient(180deg, rgba(34, 197, 94, 0.14) 0%, rgba(45, 29, 41, 0.85) 100%) !important;
+            border-color: rgba(34, 197, 94, 0.45) !important;
+        }
+
+        .handbook-divider {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+        }
+
+        .divider-line {
+            flex: 1;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, rgba(168, 45, 80, 0.35), transparent);
+        }
+
+        .divider-badge {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--accent-berry);
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            padding: 6px 3px;
+            border-radius: 999px;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            letter-spacing: 2px;
+            margin: 6px 0;
+        }
+
+        .col-header {
+            font-size: 1.08rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1.5px dashed var(--card-border);
+            padding-bottom: 8px;
+        }
+
+        .header-flag {
+            color: var(--accent-berry);
+        }
+
+        .header-sop {
+            color: #166534;
+        }
+
+        [data-theme="dark"] .header-sop {
+            color: #4ade80;
+        }
+
+        .col-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .flag-item, .sop-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .flag-icon {
+            font-size: 1.2rem;
+            line-height: 1;
+            margin-top: 2px;
+        }
+
+        .sop-num {
+            width: 22px;
+            height: 22px;
+            background: #16a34a;
+            color: #ffffff;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 900;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .flag-item h4, .sop-item h4 {
+            font-size: 0.94rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            margin-bottom: 1px;
+        }
+
+        .flag-item p, .sop-item p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .hotline-banner {
+            background: var(--card-bg);
+            border: 1.5px solid var(--accent-berry);
+            border-radius: 12px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hotline-stamp {
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: #ffffff;
+            background: var(--accent-berry);
+            padding: 5px 12px;
+            border-radius: 6px;
+        }
+
+        .hotline-text {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-wine);
+            flex: 1;
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 52px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+        }
+
+        .progress-bar-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: rgba(168, 45, 80, 0.15);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 10%;
+            background: var(--accent-berry);
+            transition: width 0.3s ease;
+        }
+
+        .nav-left, .nav-center, .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-dark);
+            padding: 5px 14px;
+            border-radius: 8px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--bg-pink);
+            border-color: var(--accent-berry);
+            color: var(--accent-berry);
+        }
+
+        .slide-counter {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            letter-spacing: 1px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .dot-nav {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .dot-item {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--card-border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .dot-item.active {
+            background: var(--accent-berry);
+            width: 22px;
+            border-radius: 999px;
+        }
+
+        .keyboard-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--pill-bg);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        /* Drawer Overlay & Menu */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(3px);
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .drawer-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .drawer-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 360px;
+            max-width: 90vw;
+            background: var(--card-bg);
+            border-left: 1px solid var(--card-border);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+            z-index: 210;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .drawer-menu.open {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 18px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .drawer-header h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .drawer-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .drawer-item {
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .drawer-item:hover {
+            background: var(--bg-pink);
+            border-color: var(--pill-border);
+        }
+
+        .drawer-item.active {
+            background: var(--pill-bg);
+            border-color: var(--accent-berry);
+        }
+
+        .drawer-idx {
+            font-size: 0.82rem;
+            font-weight: 900;
+            color: var(--accent-berry);
+            min-width: 22px;
+        }
+
+        .drawer-title-box {
+            flex: 1;
+        }
+
+        .drawer-title {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--accent-wine);
+            line-height: 1.35;
+        }
+
+        .drawer-act {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="top-bar">
+        <div class="brand-box">
+            <svg class="brand-icon" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <path d="M11 8v6M8 11h6" stroke-linecap="round"/>
+            </svg>
+            <span class="brand-title">甜蜜陷阱・戀愛推銷調查檔案</span>
+            <span class="brand-tag">教學專題</span>
+        </div>
+        <div class="top-actions">
+            <button class="action-btn" id="themeBtn">
+                <span id="themeIcon">🌓</span>
+                <span id="themeLabel">切換深色</span>
+            </button>
+            <button class="action-btn" id="drawerBtn">
+                <span>📑</span> 投影片目錄
+            </button>
+            <button class="action-btn" id="fullscreenBtn">
+                <span>⛶</span> 全螢幕
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Viewport -->
+    <main class="presentation-viewport" id="slideViewport">
+
+        <!-- Slide 01 -->
+        <article class="slide active" id="slide-1" data-slide="1">
+            <header class="slide-header">
+                <div class="meta-row">
+                    <span class="act-pill">第一幕：甜蜜陷阱・調查檔案</span>
+                    <span class="grounding-pill">EC-01</span>
+                </div>
+                <h2 class="slide-title">戀愛行銷與消費者保護——我的心動變成了溫暖的ATM</h2>
+                <div class="slide-subtitle">
+                    <span class="sub-icon">🔍</span>
+                    <span>暈船可以，暈到刷卡不行吧？！</span>
+                </div>
+            </header>
+            
+        <div class="cover-showcase-grid">
+            <div class="cover-art-card">
+                <div class="cover-badge-row">
+                    <span class="sticker-pill">❤️ 戀愛迷因調查</span>
+                    <span class="sticker-pill pill-alert">⚠️ 商業推銷陷阱</span>
+                </div>
+                <div class="hero-svg-wrapper">
+                    <!-- Bespoke Romantic Trap SVG -->
+                    <svg viewBox="0 0 280 190" class="hero-cover-svg">
+                        <defs>
+                            <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FF94B4"/>
+                                <stop offset="100%" stop-color="#A82D50"/>
+                            </linearGradient>
+                            <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#382631"/>
+                                <stop offset="100%" stop-color="#5E4253"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Heart -->
+                        <path d="M140 170 C40 110 15 65 40 32 C65 5 120 12 140 50 C160 12 215 5 240 32 C265 65 240 110 140 170 Z" fill="url(#heartGrad)" opacity="0.9"/>
+                        <!-- Entangling Red Strings -->
+                        <path d="M25 72 Q140 25 255 72" fill="none" stroke="#FFF5E9" stroke-width="2.5" stroke-dasharray="6,4"/>
+                        <path d="M40 115 Q140 80 240 115" fill="none" stroke="#FFF5E9" stroke-width="2.5"/>
+                        <path d="M70 150 Q140 125 210 150" fill="none" stroke="#FFF5E9" stroke-width="2.5" stroke-dasharray="4,4"/>
+                        <!-- Golden Price Tag Swining -->
+                        <g transform="translate(160, 100) rotate(15)">
+                            <rect x="0" y="0" width="82" height="38" rx="6" fill="#FFFDF9" stroke="#A82D50" stroke-width="2"/>
+                            <circle cx="10" cy="19" r="3.5" fill="#A82D50"/>
+                            <text x="20" y="25" font-size="13" font-weight="900" fill="#A82D50" font-family="sans-serif">NT$ 96K</text>
+                            <line x1="10" y1="19" x2="-18" y2="-18" stroke="#A82D50" stroke-width="2"/>
+                        </g>
+                        <!-- Credit Card Trap -->
+                        <g transform="translate(38, 110) rotate(-12)">
+                            <rect x="0" y="0" width="76" height="44" rx="5" fill="url(#cardGrad)" stroke="#FF94B4" stroke-width="1.5"/>
+                            <rect x="0" y="8" width="76" height="8" fill="#1C131A"/>
+                            <rect x="8" y="24" width="20" height="10" rx="2" fill="#E6C875"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="cover-slogan">
+                    <strong>「心動可以很浪漫，但帳單很現實。」</strong>
+                </div>
+            </div>
+
+            <div class="cover-intro-card">
+                <div class="dossier-stamp-box">立案編號 #2023-112094</div>
+                <h3 class="intro-headline">寫給現代善男信女的「戀愛防身手冊」</h3>
+                <p class="intro-p">你以為在交友軟體遇見了此生真愛，對方的溫柔問候讓你深深著迷。但當約會地點被換成了美容院、推銷工作室，這場相遇究竟是命中注定，還是精心演練的商業伏擊？</p>
+                
+                <div class="cover-feature-pills">
+                    <div class="feat-pill">🔍 <strong>真實案例拆解</strong>：衣渼爾美容案 9.6 萬真相與百萬重罰</div>
+                    <div class="feat-pill">🛡️ <strong>消保法實戰護盾</strong>：打破實體門市不能退迷思的「訪問交易」</div>
+                    <div class="feat-pill">🚨 <strong>五步自救急救包</strong>：把握 7 日猶豫期最強存證止損秘訣</div>
+                </div>
+
+                <div class="guide-action-hint">
+                    <span>👉 請使用下方按鈕或鍵盤 <strong>「→」</strong> 開始翻閱調查檔案</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detective-alert-card">
+            <div class="alert-badge">
+                <svg viewBox="0 0 24 24" class="alert-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#A82D50" stroke-width="2.5"/><circle cx="12" cy="11" r="1.5" fill="#A82D50"/><line x1="12" y1="14" x2="12" y2="17" stroke="#A82D50" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>偵探筆記與提醒</span>
+            </div>
+            <div class="alert-content">真正的戀愛是雙向尊重，沒有金錢對價壓力；當「好感」跟「高額合約」綁在一起時，請立刻亮起心中的警報燈！</div>
+        </div>
+    
+        </article>
+    
+        <!-- Slide 02 -->
+        <article class="slide " id="slide-2" data-slide="2">
+            <header class="slide-header">
+                <div class="meta-row">
+                    <span class="act-pill">第一幕：甜蜜陷阱・調查檔案</span>
+                    <span class="grounding-pill">EC-01</span>
+                </div>
+                <h2 class="slide-title">他想認識你，還是想認識你的錢包？</h2>
+                <div class="slide-subtitle">
+                    <span class="sub-icon">🔍</span>
+                    <span>拆解交友軟體到實體門市的四步引流套路。</span>
+                </div>
+            </header>
+            
+        <div class="story-flow-wrapper">
+            <div class="flow-header-tip">🎯 業者常見操作模式：將日常生活交友包裝為「商業引流漏斗」</div>
+            <div class="flow-steps-grid">
+                
+            <div class="flow-step-card">
+                <div class="step-badge">01</div>
+                <h4 class="step-name">網路撒網</h4>
+                <p class="step-text">交友軟體營造渴望戀愛形象，每日問候建立好感與情感依賴。</p>
+                <div class="step-arrow">➔</div>
+            </div>
+        
+            <div class="flow-step-card">
+                <div class="step-badge">02</div>
+                <h4 class="step-name">藉故邀約</h4>
+                <p class="step-text">聊熟後以「去我店裡探班、免費做臉體驗、幫忙衝業績」約見面。</p>
+                <div class="step-arrow">➔</div>
+            </div>
+        
+            <div class="flow-step-card">
+                <div class="step-badge">03</div>
+                <h4 class="step-name">現場包圍</h4>
+                <p class="step-text">到達特定場所後，店員與主管輪番上陣，利用人情盛情難卻強力推銷。</p>
+                <div class="step-arrow">➔</div>
+            </div>
+        
+            <div class="flow-step-card">
+                <div class="step-badge">04</div>
+                <h4 class="step-name">分期收網</h4>
+                <p class="step-text">絕口不提驚人高額總價，主打「每個月只要幾千元」，誘使簽約分期。</p>
+                <div class="step-arrow">➔</div>
+            </div>
+        
+            </div>
+        </div>
+        <div class="law-focus-card">
+            <div class="law-tag">主管機關實務定性</div>
+            <p class="full-flow-text">此類「四階段常見操作模式」刻意利用消費者期待戀愛的防備空隙，將原本生活化的交友互動轉化為封閉式的商業促銷。</p>
+        </div>
+        
+        <div class="detective-alert-card">
+            <div class="alert-badge">
+                <svg viewBox="0 0 24 24" class="alert-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#A82D50" stroke-width="2.5"/><circle cx="12" cy="11" r="1.5" fill="#A82D50"/><line x1="12" y1="14" x2="12" y2="17" stroke="#A82D50" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>偵探筆記與提醒</span>
+            </div>
+            <div class="alert-content">只要約會地點不是一般的咖啡廳或電影院，而是指名特定「公司、美容院、教室」，請務必提高警覺！</div>
+        </div>
+    
+        </article>
+    
+        <!-- Slide 03 -->
+        <article class="slide " id="slide-3" data-slide="3">
+            <header class="slide-header">
+                <div class="meta-row">
+                    <span class="act-pill">第一幕：甜蜜陷阱・調查檔案</span>
+                    <span class="grounding-pill">EC-01, EC-02</span>
+                </div>
+                <h2 class="slide-title">說好來約會，怎麼變成九萬六？！</h2>
+                <div class="slide-subtitle">
+                    <span class="sub-icon">🔍</span>
+                    <span>一場看似浪漫的邀約，背後竟然藏著高額推銷。</span>
+                </div>
+            </header>
+            
+        <!-- Headline Breaking Badge for Slide 3 -->
+        <div class="headline-verdict-banner">
+            <div class="verdict-banner-left">
+                <span class="agency-tag">⚖️ 公平交易委員會 公處字第 112094 號處分案</span>
+                <div class="headline-stamp-amount">
+                    <span class="stamp-action">裁罰</span>
+                    <span class="stamp-digits">100</span>
+                    <span class="stamp-unit">萬元</span>
+                </div>
+            </div>
+            <div class="verdict-banner-right">
+                <div class="verdict-headline-title">衣渼爾美容案：假借交友名義・隱匿重大交易資訊</div>
+                <div class="verdict-headline-desc">經公平會正式調查，認定其以假地址及隱匿總價推銷，違反《公平交易法》第 25 條顯失公平規定，重罰 100 萬元！</div>
+            </div>
+        </div>
+
+        <div class="dossier-grid">
+            <div class="dossier-evidence-col">
+                <div class="evidence-pin-card pin-1">
+                    <div class="pin-tag">關鍵事證 ① 假地址防查證</div>
+                    <h4>新生路 289 號 vs 281 號</h4>
+                    <p>故意提供鄰近假地址（新生路 <strong>289 號</strong>），讓消費者事前無法搜尋負評，抵達後再由人員電話引導走入 <strong>281 號</strong> 密閉店面。</p>
+                </div>
+                <div class="evidence-pin-card pin-2">
+                    <div class="pin-tag">關鍵事證 ② 隱匿高額總價</div>
+                    <h4>契約總價 NT$ 96,000 元</h4>
+                    <p>人員不斷試探預算，絕口不提整套保養品總價高達 <strong>9 萬 6,000 元</strong>，包裝成「月繳數千元」即可做臉，誘騙簽約。</p>
+                </div>
+            </div>
+
+            <div class="dossier-verdict-card">
+                <div class="verdict-card-header">
+                    <span class="verdict-pill">真實案件情境示意</span>
+                    <h3>【多對一疲勞轟炸推銷】</h3>
+                </div>
+                <div class="chat-dossier-mock">
+                    <div class="mock-bubble mock-bubble-left">
+                        <span class="mock-sender">網友邀約</span>
+                        「寶貝，我店在新生路 289 號，你到了打給我，我帶你上來做臉體驗～」
+                    </div>
+                    <div class="mock-bubble mock-bubble-right">
+                        <span class="mock-sender">門市人員</span>
+                        「你既然想真心跟她交往，每個月這點支持都不肯幫她衝業績嗎？」
+                    </div>
+                </div>
+                <div class="dossier-meta">
+                    <span>誘簽契約金額：<strong>9.6 萬元</strong></span>
+                    <span>公平會裁罰金額：<strong>100 萬元</strong></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detective-alert-card">
+            <div class="alert-badge">
+                <svg viewBox="0 0 24 24" class="alert-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#A82D50" stroke-width="2.5"/><circle cx="12" cy="11" r="1.5" fill="#A82D50"/><line x1="12" y1="14" x2="12" y2="17" stroke="#A82D50" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>偵探筆記與提醒</span>
+            </div>
+            <div class="alert-content">請分清兩個重要數字：消費者被誘簽的契約金額是「9.6 萬元」，公平會對業者的裁罰金額是「100 萬元」！</div>
+        </div>
+    
+        </article>
+    
+        <!-- Slide 04 -->
+        <article class="slide " id="slide-4" data-slide="4">
+            <header class="slide-header">
+                <div class="meta-row">
+                    <span class="act-pill">第二幕：獵捕現場・密室困局</span>
+                    <span class="grounding-pill">EC-02, EC-03</span>
+                </div>
+                <h2 class="slide-title">人都躺上美容床了，錢包還躺得住嗎？</h2>
+                <div class="slide-subtitle">
+                    <span class="sub-icon">🔍</span>
+                    <span>半裸受制、強拆封膜與本票分期：門市現場的三大心理伏擊。</span>
+                </div>
+            </header>
+            
+        <div class="tactic-triad-grid">
+            <div class="tactic-card">
+                <div class="tactic-badge">密室圈套 ①</div>
+                <h4>美容床身體受制</h4>
+                <div class="card-ref-tag">事證依據：證據卡 EC-02</div>
+                <p>趁顧客臉部敷著保養品、半裸躺臥美容床無法自由起身時，店員在旁長達數小時持續游說施壓，趁其身心疲憊無暇思考時索取簽名。</p>
+            </div>
+            <div class="tactic-card">
+                <div class="tactic-badge">密室圈套 ②</div>
+                <h4>當場預先拆封商品</h4>
+                <div class="card-ref-tag">事證依據：證據卡 EC-02</div>
+                <p>藉口檢查瑕疵或代簽防拿錯，主動拆開十幾瓶全新保養品封膜，事後強勢主張「商品已拆封使用」，製造消費者無法反悔的既成事實。</p>
+            </div>
+            <div class="tactic-card">
+                <div class="tactic-badge">密室圈套 ③</div>
+                <h4>夾帶分期與本票</h4>
+                <div class="card-ref-tag">事證依據：證據卡 EC-03</div>
+                <p>以「填寫會員資料」為由，誘導簽署第三方購物分期借貸申請書，下方更夾帶「本票」授權條款，為日後法律追討索債埋下伏筆。</p>
+            </div>
+        </div>
+        <div class="law-focus-card">
+            <div class="law-tag">門市現場法律定性</div>
+            <p class="full-flow-text">利用封閉環境與人身行動不便進行高壓推銷，在消保法與公平法上皆屬不當影響消費者作成交易決定的不正競爭手法。</p>
+        </div>
+        
+        <div class="detective-alert-card">
+            <div class="alert-badge">
+                <svg viewBox="0 0 24 24" class="alert-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#A82D50" stroke-width="2.5"/><circle cx="12" cy="11" r="1.5" fill="#A82D50"/><line x1="12" y1="14" x2="12" y2="17" stroke="#A82D50" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>偵探筆記與提醒</span>
+            </div>
+            <div class="alert-content">只要身體處於無法自由離開的狀態，不要在任何文件上簽名！堅持「等我起來、穿好衣服、離開現場再說」。</div>
+        </div>
+    
+        </article>
+    
+        <!-- Slide 05 -->
+        <article class="slide " id="slide-5" data-slide="5">
+            <header class="slide-header">
+                <div class="meta-row">
+                    <span class="act-pill">第二幕：獵捕現場・密室困局</span>
+                    <span class="grounding-pill">EC-01, EC-11</span>
+                </div>
+                <h2 class="slide-title">不是我太暈，是這局真的太會演！</h2>
+                <div class="slide-subtitle">
+                    <span class="sub-icon">🔍</span>
+                    <span>同理受害者處境：好感期待與密室壓力如何摧毀拒絕意志。</span>
+                </div>
+            </header>
+            
+        <div class="dialogue-cloud-container">
+            <div class="chat-bubble bubble-left">
+                <span class="chat-sender">曖昧對象溫情施壓</span>
+                「如果你連這點業績都不肯幫我，你之前說的喜歡我都是假的嗎？」
+            </div>
+            <div class="chat-bubble bubble-right">
+                <span class="chat-sender">門市主管在旁敲邊鼓</span>
+                「每個月才幾千塊，男生愛女朋友不是都該大方一點嗎？不要讓她失望嘛！」
+            </div>
+            <div class="chat-bubble bubble-inner">
+                <span class="chat-sender">當事人當下內心獨白</span>
+                「其實金額真的很高...但現在當面拒絕太難堪了，我們是不是就連朋友都做不成了？」
+            </div>
+        </div>
+
+        <div class="empathy-card">
+            <div class="empathy-header">
+                <span class="badge-icon">🤝</span>
+                <h3>拒絕檢討受害者：看清被操弄的善意與人性弱點</h3>
+            </div>
+            <div class="empathy-reasons-grid">
+                <div class="empathy-reason-item">
+                    <div class="reason-tag">💔 恐懼關係破裂</div>
+                    <p>害怕當場拒絕會摧毀剛萌芽的情感關係與好感形象。</p>
+                </div>
+                <div class="empathy-reason-item">
+                    <div class="reason-tag">🧠 密室決策疲勞</div>
+                    <p>長時間疲勞轟炸導致意志力崩潰，只想簽字換取脫身。</p>
+                </div>
+                <div class="empathy-reason-item">
+                    <div class="reason-tag">👥 人情討好枷鎖</div>
+                    <p>利用對「當面拒絕他人」的尷尬與內疚感進行情緒勒索。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detective-alert-card">
+            <div class="alert-badge">
+                <svg viewBox="0 0 24 24" class="alert-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#A82D50" stroke-width="2.5"/><circle cx="12" cy="11" r="1.5" fill="#A82D50"/><line x1="12" y1="14" x2="12" y2="17" stroke="#A82D50" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>偵探筆記與提醒</span>
+            </div>
+            <div class="alert-content">別再怪自己太單純！這是一套針對人性弱點精心研發的商業劇本。感到窒息時，請果斷「尿遁」或直接轉身離開！</div>
+        </div>
+    
+        </article>
+    
+        <!-- Slide 06 -->
+        <article class="slide " id="slide-6" data-slide="6">
+            <header class="slide-header">
+                <div class="meta-row">
+                    <span class="act-pill">第二幕：獵捕現場・密室困局</span>
+                    <span class="grounding-pill">EC-02, EC-03</span>
+                </div>
+                <h2 class="slide-title">戀愛還沒開始，帳單先談長久？</h2>
+                <div class="slide-subtitle">
+                    <span class="sub-icon">🔍</span>
+                    <span>簽約之後的骨牌效應：融資催繳、本票裁定與信用風暴。</span>
+                </div>
+            </header>
+            
+        <div class="domino-grid">
+            
+            <div class="domino-card">
+                <div class="domino-step">01</div>
+                <h4>突發高額負債</h4>
+                <p>一套產品動輒數萬至近十萬元，遠遠超出打工族或學生日常負擔能力。</p>
+            </div>
+        
+            <div class="domino-card">
+                <div class="domino-step">02</div>
+                <h4>債權轉讓融資</h4>
+                <p>美容業者轉身將債權轉移給融資公司，業者早早落袋，消費者面臨合法催繳。</p>
+            </div>
+        
+            <div class="domino-card">
+                <div class="domino-step">03</div>
+                <h4>本票裁定執行</h4>
+                <p>依《票據法》第 123 條聲請法院本票裁定非訟程序，迅速取得執行名義查封扣薪。</p>
+            </div>
+        
+            <div class="domino-card">
+                <div class="domino-step">04</div>
+                <h4>信任信用雙崩塌</h4>
+                <p>聯徵信用紀錄受損，且驚覺甜蜜曖昧只是一場業績算計，留下深沉背叛創傷。</p>
+            </div>
+        
+        </div>
+        <div class="law-focus-card">
+            <div class="law-tag">商業風險轉嫁與法律程序辨析</div>
+            <p class="full-flow-text">本票並非直接扣薪，但本票裁定程序極快，若置之不理將導致強制執行；抗辯事由須在期限內另提確認本票債權不存在之訴救濟。</p>
+        </div>
+        
+        <div class="detective-alert-card">
+            <div class="alert-badge">
+                <svg viewBox="0 0 24 24" class="alert-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#A82D50" stroke-width="2.5"/><circle cx="12" cy="11" r="1.5" fill="#A82D50"/><line x1="12" y1="14" x2="12" y2="17" stroke="#A82D50" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>偵探筆記與提醒</span>
+            </div>
+            <div class="alert-content">看清楚你簽的每一張單據！只要看見「本票」或「融資受讓人」字樣，請立刻停筆收回！</div>
+        </div>
+    
+        </article>
+    
+        <!-- Slide 07 -->
+        <article class="slide " id="slide-7" data-slide="7">
+            <header class="slide-header">
+                <div class="meta-row">
+                    <span class="act-pill">第三幕：法律護盾・審判現場</span>
+                    <span class="grounding-pill">EC-04, EC-05, EC-06, EC-07</span>
+                </div>
+                <h2 class="slide-title">自己走進店裡，就真的不能反悔？</h2>
+                <div class="slide-subtitle">
+                    <span class="sub-icon">🔍</span>
+                    <span>消保法第 19 條護盾：受誘被動到店依然享有法定解除權。</span>
+                </div>
+            </header>
+            
+        <!-- Headline Judicial Banner for Slide 7 -->
+        <div class="headline-shield-banner">
+            <div class="shield-banner-seal">
+                <div class="court-case-number">臺灣臺中地方法院 111 年度中小字第 3398 號民事判決</div>
+                <div class="shield-big-verdict">法定訪問交易！</div>
+                <div class="seal-sub-tag">司法判決重大突破</div>
+            </div>
+            <div class="shield-banner-text">
+                <div class="shield-verdict-title">「假借交友邀約被動到店，拆封不可退約定無效！」</div>
+                <div class="shield-verdict-desc">法院明確認定：消費者係受誘被動赴約，事前欠缺締約之心理防備，實質等同《消保法》第 19 條訪問交易；契約中排除解除權條款依法無效！</div>
+            </div>
+        </div>
+
+        <div class="myth-buster-grid">
+            <div class="myth-card">
+                <div class="myth-header">❌ 業者的卸責藉口</div>
+                <h3>「你自己走進店裡簽名的，實體店面哪來的鑑賞期？」</h3>
+                <p>業者常利用民眾對「實體店面買東西不能退」的迷思，強勢主張合約已載明拋棄審閱期與退貨權，消費者無權解除契約。</p>
+            </div>
+            <div class="shield-card">
+                <div class="shield-header">✔️ 法院判決正義護盾</div>
+                <div class="court-badge">臺中地院 111 年度中小字第 3398 號</div>
+                <h3>「交友誘導邀約被動到店，實質仍屬訪問交易！」</h3>
+                <p></p>
+            </div>
+        </div>
+        <div class="cpa-provisions-card">
+            <div class="cpa-header">
+                <span class="cpa-icon">🛡️</span>
+                <strong>消保法第 19 條法寶：7 日猶豫期解除權</strong>
+            </div>
+            <p class="full-flow-text">受交友誘導到店之個案，依法享有 7 日猶豫期，無須說明理由或負擔任何費用解除契約。</p>
+        </div>
+        
+        <div class="detective-alert-card">
+            <div class="alert-badge">
+                <svg viewBox="0 0 24 24" class="alert-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#A82D50" stroke-width="2.5"/><circle cx="12" cy="11" r="1.5" fill="#A82D50"/><line x1="12" y1="14" x2="12" y2="17" stroke="#A82D50" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>偵探筆記與提醒</span>
+            </div>
+            <div class="alert-content">別被「實體門市」四個字嚇倒！只要是「交友邀約被動到店」，在司法實務上有極大空間被認定為訪問交易！</div>
+        </div>
+    
+        </article>
+    
+        <!-- Slide 08 -->
+        <article class="slide " id="slide-8" data-slide="8">
+            <header class="slide-header">
+                <div class="meta-row">
+                    <span class="act-pill">第三幕：法律護盾・審判現場</span>
+                    <span class="grounding-pill">EC-04, EC-10</span>
+                </div>
+                <h2 class="slide-title">感情可以騙，法律抓得到嗎？</h2>
+                <div class="slide-subtitle">
+                    <span class="sub-icon">🔍</span>
+                    <span>傳統救濟的現實瓶頸：刑事詐欺舉證難、民法暴利門檻高。</span>
+                </div>
+            </header>
+            
+        <div class="bottleneck-grid">
+            
+            <div class="bottleneck-card">
+                <div class="b-badge">司法現實瓶頸 1</div>
+                <h4>刑事詐欺成罪門檻甚高</h4>
+                <p>甜言蜜語常被抗辯為主觀情感交流或民事推銷話術，若缺乏直接詐術事證，檢警難以認定具有刑事詐欺故意。</p>
+            </div>
+        
+            <div class="bottleneck-card">
+                <div class="b-badge">司法現實瓶頸 2</div>
+                <h4>民法「暴利行為」要件嚴苛</h4>
+                <p>依最高法院 110 台上 534 裁判評析，撤銷暴利行為須同時證明「利用急迫、輕率、無經驗」與「客觀顯失公平」，舉證難度極高。</p>
+            </div>
+        
+            <div class="bottleneck-card">
+                <div class="b-badge">司法現實瓶頸 3</div>
+                <h4>缺乏專屬情感行銷法規</h4>
+                <p>我國現行民事法律尚未設立專門針對「不當利用好感推銷」的專屬撤銷條文，使案件常陷入一般契約爭議。</p>
+            </div>
+        
+        </div>
+        <div class="law-focus-card">
+            <div class="law-tag">法制盲區反思與策略</div>
+            <p class="full-flow-text"></p>
+        </div>
+        
+        <div class="detective-alert-card">
+            <div class="alert-badge">
+                <svg viewBox="0 0 24 24" class="alert-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#A82D50" stroke-width="2.5"/><circle cx="12" cy="11" r="1.5" fill="#A82D50"/><line x1="12" y1="14" x2="12" y2="17" stroke="#A82D50" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>偵探筆記與提醒</span>
+            </div>
+            <div class="alert-content">不要寄望曠日廢時的刑事訴訟來幫你退錢！把握黃金「七日」發動消保法解除權，才是成功機率最高的自保王道！</div>
+        </div>
+    
+        </article>
+    
+        <!-- Slide 09 -->
+        <article class="slide " id="slide-9" data-slide="9">
+            <header class="slide-header">
+                <div class="meta-row">
+                    <span class="act-pill">第三幕：法律護盾・審判現場</span>
+                    <span class="grounding-pill">EC-11</span>
+                </div>
+                <h2 class="slide-title">日本有「約會取消權」，台灣呢？</h2>
+                <div class="slide-subtitle">
+                    <span class="sub-icon">🔍</span>
+                    <span>他山之石：日本《消費者契約法》如何專門立法擊破困惑締約。</span>
+                </div>
+            </header>
+            
+        <div class="japan-header-box">
+            <div class="japan-stamp">日本法制・我國尚無相同明文</div>
+            <h3>日本《消費者契約法》第 4 條第 3 項第 6 款「困惑取消權」</h3>
+        </div>
+        <div class="japan-flow-grid">
+            
+            <div class="japan-req-card">
+                <span class="req-tag">要件 ①</span>
+                <h4>社會經驗不足</h4>
+                <p>消費者欠缺足夠之社會生活經驗</p>
+            </div>
+        
+            <div class="japan-req-card">
+                <span class="req-tag">要件 ②</span>
+                <h4>誤信戀愛好感</h4>
+                <p>誤信業者對自己抱持好感情意</p>
+            </div>
+        
+            <div class="japan-req-card">
+                <span class="req-tag">要件 ③</span>
+                <h4>威脅關係破裂</h4>
+                <p>業者告以若不購買關係將破裂</p>
+            </div>
+        
+            <div class="japan-req-card">
+                <span class="req-tag">要件 ④</span>
+                <h4>困惑簽署合約</h4>
+                <p>因恐懼失去關係心生困惑而締約</p>
+            </div>
+        
+        </div>
+        <div class="japan-verdict-box">
+            <span class="verdict-arrow">➔ 法律效果：</span>
+            <strong>消費者依法享有專屬撤銷權，得直接使契約溯及失效返還款項！</strong>
+        </div>
+        <div class="law-focus-card">
+            <div class="law-tag">比較法啟示與台灣借鏡</div>
+            <p class="full-flow-text"></p>
+        </div>
+        
+        <div class="detective-alert-card">
+            <div class="alert-badge">
+                <svg viewBox="0 0 24 24" class="alert-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#A82D50" stroke-width="2.5"/><circle cx="12" cy="11" r="1.5" fill="#A82D50"/><line x1="12" y1="14" x2="12" y2="17" stroke="#A82D50" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>偵探筆記與提醒</span>
+            </div>
+            <div class="alert-content">日本法律讓我們看見：感情被利用不是受害者的羞恥，而是法律制度應該挺身制裁的商業惡意！</div>
+        </div>
+    
+        </article>
+    
+        <!-- Slide 10 -->
+        <article class="slide " id="slide-10" data-slide="10">
+            <header class="slide-header">
+                <div class="meta-row">
+                    <span class="act-pill">第四幕：實戰防身・自救手冊</span>
+                    <span class="grounding-pill">EC-01, EC-03, EC-04, EC-05</span>
+                </div>
+                <h2 class="slide-title">暈船急救包：愛情可以暈，權利不能暈！</h2>
+                <div class="slide-subtitle">
+                    <span class="sub-icon">🔍</span>
+                    <span>實戰防身五步 SOP：確認要件、保全對話、商品原狀、存證信函、撥打 1950。</span>
+                </div>
+            </header>
+            
+        <div class="handbook-calendar-strip">
+            <div class="calendar-badge">
+                <span class="cal-title">黃金關鍵</span>
+                <span class="cal-days">7 日</span>
+            </div>
+            <div class="calendar-desc">
+                <strong>法定猶豫期倒數提醒</strong>：依《消保法》第 19 條，若符合訪問交易要件，請務必於收受商品次日起算 7 日內發出解除契約通知！（註：並非所有消費均享 7 日解除權，須符合法定要件）
+            </div>
+        </div>
+
+        <div class="handbook-grid">
+            <div class="handbook-col flags-col">
+                <div class="col-header header-flag">
+                    <span class="badge-icon">🚩</span> 識破 3 大招攬警訊
+                </div>
+                <div class="col-items-list">
+                    
+            <div class="flag-item">
+                <span class="flag-icon">🚩</span>
+                <div>
+                    <h4>剛認識即熱情曖昧</h4>
+                    <p>天天噓寒問暖營造情侶錯覺，對自身工作店名卻多所保留。</p>
+                </div>
+            </div>
+        
+            <div class="flag-item">
+                <span class="flag-icon">🚩</span>
+                <div>
+                    <h4>急約特定門市見面</h4>
+                    <p>以「探班、做臉體驗、幫衝業績」等藉口約至特定營業場所。</p>
+                </div>
+            </div>
+        
+            <div class="flag-item">
+                <span class="flag-icon">🚩</span>
+                <div>
+                    <h4>地址神祕不給店名</h4>
+                    <p>故意給鄰近假地址或模糊指引，妨礙你事前上網搜尋真實評價。</p>
+                </div>
+            </div>
+        
+                </div>
+            </div>
+            
+            <div class="handbook-divider">
+                <div class="divider-line"></div>
+                <div class="divider-badge">防身對策</div>
+                <div class="divider-line"></div>
+            </div>
+
+            <div class="handbook-col sop-col">
+                <div class="col-header header-sop">
+                    <span class="badge-icon">🛡️</span> 黃金 7 日五步自救 SOP
+                </div>
+                <div class="col-items-list">
+                    
+            <div class="sop-item">
+                <span class="sop-num">1</span>
+                <div>
+                    <h4>確認適用要件</h4>
+                    <p>確認交易符合受誘導被動前往營業所之「訪問交易」要件（非所有消費均可無條件解約）。</p>
+                </div>
+            </div>
+        
+            <div class="sop-item">
+                <span class="sop-num">2</span>
+                <div>
+                    <h4>保留對話鐵證</h4>
+                    <p>完整截圖交友軟體所有對話、門市照片與分期合約，切勿因害羞而刪除證據。</p>
+                </div>
+            </div>
+        
+            <div class="sop-item">
+                <span class="sop-num">3</span>
+                <div>
+                    <h4>妥善保存商品</h4>
+                    <p>剩餘保養品及外盒切勿繼續拆封使用，保持原狀封存以避免價值折損爭議。</p>
+                </div>
+            </div>
+        
+            <div class="sop-item">
+                <span class="sop-num">4</span>
+                <div>
+                    <h4>法定期間通知解約</h4>
+                    <p>於 7 日猶豫期內以書面通知解約；強烈建議寄發郵局「雙掛號存證信函」留存最強證明。</p>
+                </div>
+            </div>
+        
+            <div class="sop-item">
+                <span class="sop-num">5</span>
+                <div>
+                    <h4>尋求外部申訴協助</h4>
+                    <p>立即撥打 1950 全國消費者服務專線，向地方消保官申請爭議申訴與調解。</p>
+                </div>
+            </div>
+        
+                </div>
+            </div>
+        </div>
+
+        <div class="hotline-banner">
+            <div class="hotline-stamp">📞 1950 全國消費者服務專線</div>
+            <div class="hotline-text">遭遇戀愛推銷爭議請即刻自救！愛情可以盲目，法律權利不能讓步！</div>
+        </div>
+        
+        <div class="detective-alert-card">
+            <div class="alert-badge">
+                <svg viewBox="0 0 24 24" class="alert-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="#A82D50" stroke-width="2.5"/><circle cx="12" cy="11" r="1.5" fill="#A82D50"/><line x1="12" y1="14" x2="12" y2="17" stroke="#A82D50" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>偵探筆記與提醒</span>
+            </div>
+            <div class="alert-content">愛情可以盲目，法律權利不能讓步！記住：只要勇敢採取行動，法律永遠是保護你的最後一道防線！</div>
+        </div>
+    
+        </article>
+    
+    </main>
+
+    <!-- Bottom Controls Bar -->
+    <footer class="bottom-nav">
+        <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <div class="nav-left">
+            <button class="nav-btn" id="prevSlideBtn">
+                <span>‹</span> 上一頁
+            </button>
+            <div class="slide-counter">
+                <span id="currentNum">01</span> / 10
+            </div>
+            <button class="nav-btn" id="nextSlideBtn">
+                下一頁 <span>›</span>
+            </button>
+        </div>
+        <div class="nav-center">
+            <div class="dot-nav" id="dotNav"></div>
+        </div>
+        <div class="nav-right">
+            <span class="keyboard-hint">快捷鍵：← → 方向鍵 或 空白鍵</span>
+        </div>
+    </footer>
+
+    <!-- Drawer Navigation Menu -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <aside class="drawer-menu" id="drawerMenu">
+        <div class="drawer-header">
+            <h3>📑 調查檔案目錄</h3>
+            <button class="drawer-close" id="drawerClose">&times;</button>
+        </div>
+        <div class="drawer-list" id="drawerList"></div>
+    </aside>
+
+    <script>
+        (function() {
+            const totalSlides = 10;
+            let currentSlide = 1;
+
+            const slides = document.querySelectorAll('.slide');
+            const currentNumEl = document.getElementById('currentNum');
+            const progressFill = document.getElementById('progressFill');
+            const prevBtn = document.getElementById('prevSlideBtn');
+            const nextBtn = document.getElementById('nextSlideBtn');
+            const dotNav = document.getElementById('dotNav');
+            const themeBtn = document.getElementById('themeBtn');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeLabel = document.getElementById('themeLabel');
+            const drawerBtn = document.getElementById('drawerBtn');
+            const drawerClose = document.getElementById('drawerClose');
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            const drawerMenu = document.getElementById('drawerMenu');
+            const drawerList = document.getElementById('drawerList');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+            // Render Dot Navigation & Drawer List
+            slides.forEach((slide, i) => {
+                const idx = i + 1;
+                const title = slide.querySelector('.slide-title').innerText;
+                const act = slide.querySelector('.act-pill').innerText;
+
+                // Dot item
+                const dot = document.createElement('div');
+                dot.className = `dot-item ${idx === 1 ? 'active' : ''}`;
+                dot.title = `第 ${idx} 頁：${title}`;
+                dot.addEventListener('click', () => goToSlide(idx));
+                dotNav.appendChild(dot);
+
+                // Drawer item
+                const item = document.createElement('div');
+                item.className = `drawer-item ${idx === 1 ? 'active' : ''}`;
+                item.innerHTML = `
+                    <span class="drawer-idx">${String(idx).padStart(2, '0')}</span>
+                    <div class="drawer-title-box">
+                        <div class="drawer-title">${title}</div>
+                        <div class="drawer-act">${act}</div>
+                    </div>
+                `;
+                item.addEventListener('click', () => {
+                    goToSlide(idx);
+                    closeDrawer();
+                });
+                drawerList.appendChild(item);
+            });
+
+            function updateUI() {
+                slides.forEach((slide, i) => {
+                    if (i + 1 === currentSlide) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+
+                currentNumEl.textContent = String(currentSlide).padStart(2, '0');
+                const progressPercent = (currentSlide / totalSlides) * 100;
+                progressFill.style.width = `${progressPercent}%`;
+
+                prevBtn.disabled = currentSlide === 1;
+                prevBtn.style.opacity = currentSlide === 1 ? '0.45' : '1';
+                nextBtn.disabled = currentSlide === totalSlides;
+                nextBtn.style.opacity = currentSlide === totalSlides ? '0.45' : '1';
+
+                document.querySelectorAll('.dot-item').forEach((dot, i) => {
+                    dot.classList.toggle('active', i + 1 === currentSlide);
+                });
+
+                document.querySelectorAll('.drawer-item').forEach((item, i) => {
+                    item.classList.toggle('active', i + 1 === currentSlide);
+                });
+
+                document.getElementById('slideViewport').scrollTop = 0;
+            }
+
+            function goToSlide(n) {
+                if (n < 1) n = 1;
+                if (n > totalSlides) n = totalSlides;
+                currentSlide = n;
+                updateUI();
+            }
+
+            function nextSlide() {
+                if (currentSlide < totalSlides) {
+                    goToSlide(currentSlide + 1);
+                }
+            }
+
+            function prevSlide() {
+                if (currentSlide > 1) {
+                    goToSlide(currentSlide - 1);
+                }
+            }
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                    e.preventDefault();
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                    e.preventDefault();
+                    prevSlide();
+                } else if (e.key === 'Escape') {
+                    closeDrawer();
+                }
+            });
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            let isDark = false;
+            themeBtn.addEventListener('click', () => {
+                isDark = !isDark;
+                document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+                themeIcon.textContent = isDark ? '☀️' : '🌓';
+                themeLabel.textContent = isDark ? '切換淺色' : '切換深色';
+            });
+
+            function openDrawer() {
+                drawerOverlay.classList.add('open');
+                drawerMenu.classList.add('open');
+            }
+
+            function closeDrawer() {
+                drawerOverlay.classList.remove('open');
+                drawerMenu.classList.remove('open');
+            }
+
+            drawerBtn.addEventListener('click', openDrawer);
+            drawerClose.addEventListener('click', closeDrawer);
+            drawerOverlay.addEventListener('click', closeDrawer);
+
+            fullscreenBtn.addEventListener('click', () => {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => {
+                        console.log('Fullscreen request denied:', err);
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
+            });
+
+            updateUI();
+        })();
+    </script>
+</body>
+</html>
